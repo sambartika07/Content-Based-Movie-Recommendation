@@ -6,16 +6,10 @@ import requests
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-# -----------------------------
-# TMDB API KEY
-# -----------------------------
 
 API_KEY = "e3c659b5a1c10abb58839dddee76ac03"
 
 
-# -----------------------------
-# Load Dataset and Create Vectors
-# -----------------------------
 
 @st.cache_data
 def load_data():
@@ -38,9 +32,7 @@ movies, vectors = load_data()
 
 
 
-# -----------------------------
 # Fetch Movie Poster
-# -----------------------------
 
 def fetch_poster(movie_id):
 
@@ -66,9 +58,7 @@ def fetch_poster(movie_id):
     return "https://via.placeholder.com/500x750?text=No+Poster"
 
 
-# -----------------------------
 # Recommendation Function
-# -----------------------------
 
 def recommend(movie_name):
 
@@ -171,9 +161,8 @@ def recommend(movie_name):
 
 
 
-# -----------------------------
+
 # Streamlit UI
-# -----------------------------
 
 st.set_page_config(
     page_title="Movie Recommendation Engine",

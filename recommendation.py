@@ -1,36 +1,29 @@
-# Import libraries
 import pandas as pd
 import numpy as np
 
-# Convert text into vectors
 from sklearn.feature_extraction.text import CountVectorizer
 
-# Read processed dataset
 movies = pd.read_csv("processed_movies.csv")
 
 print("Dataset Loaded Successfully!")
 
-# Convert text into vectors
 cv = CountVectorizer(max_features=5000, stop_words="english")
 vectors = cv.fit_transform(movies["tags"]).toarray()
 
 print("Vectors Created Successfully!")
 
-# -------------------------------
+
 # Recommendation Function
-# -------------------------------
+
 
 def recommend(movie_name):
 
-    # Check if movie exists
     if movie_name not in movies["title"].values:
         print("Movie not found!")
         return
 
-    # Get index of selected movie
     movie_index = movies[movies["title"] == movie_name].index[0]
 
-    # Selected movie vector
     selected_vector = vectors[movie_index]
 
     similarity_scores = []
@@ -83,9 +76,9 @@ def recommend(movie_name):
             break
 
 
-# -------------------------------
+
 # User Input
-# -------------------------------
+
 
 movie_name = input("Enter Movie Name: ")
 
